@@ -1,4 +1,5 @@
 import { sql } from '../configs/db.js';
+import { v4 as uuidv4 } from 'uuid';
 
 const getTransactionsByUserId = async (req, res) => {
   try {
@@ -41,8 +42,10 @@ const createTransaction = async (req, res) => {
       return res.status(400).send({ success: 0, message: 'All fields are required!' });
     }
 
-    const newTransaction = await sql`INSERT INTO transactions (user_id, title, amount, category)
-              VALUES (${user_id}, ${title}, ${amount}, ${category}) RETURNING *;`;
+    const id = uuidv4();
+
+    const newTransaction = await sql`INSERT INTO transactions (id, user_id, title, amount, category)
+              VALUES (${id}, ${user_id}, ${title}, ${amount}, ${category}) RETURNING *;`;
 
     console.log('New transaction created:', newTransaction);
 
