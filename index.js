@@ -7,8 +7,9 @@ import cors from 'cors';
 import job from './configs/cron.js';
 
 import transactionsRoute from './routes/transactionsRoute.js';
+import usersRoute from './routes/usersRoute.js';
 
-dotenv.config({});
+dotenv.config({ quiet: true });
 
 const app = express();
 const PORT = process.env.PORT || 9009;
@@ -28,14 +29,20 @@ app.use(cors({
 }));
 
 //routes
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Welcome to the Ledgerly API' });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({ success: 1, status: "OK" });
 });
 
 app.use("/api/transactions", transactionsRoute);
+app.use("/api/users", usersRoute);
+
 
 initDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+    console.log(`Server is running at: http://localhost:${PORT}`);
   });
 });
