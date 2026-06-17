@@ -1,11 +1,11 @@
 {
-  "name": "backend",
+  "name": "ledgerly-api",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
@@ -18,7 +18,8 @@
     "cors": "^2.8.6",
     "cron": "^4.4.0",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "morgan": "^1.10.1",
