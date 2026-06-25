@@ -1,4 +1,4 @@
-# Expense Tracker Backend API (Node.js + Express)
+# Ledgerly - Expense Tracker Backend API (Node.js + Express)
 
 A RESTful backend API for managing users, authentication, and financial transactions (income & expenses) for the Expense Tracker mobile application.
 
